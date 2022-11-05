@@ -15,13 +15,11 @@ export const Form = ({ createTodo }: Props) => {
         setTodoText("");
     };
 
-    const changeHandler = (e: React.FormEvent<HTMLInputElement>): void => {
-        setTodoText(e.currentTarget.value);
-    };
+    const changeHandler = (e: React.FormEvent<HTMLInputElement>): void => setTodoText(e.currentTarget.value);
 
     return (
         <form onSubmit={submitHandler}>
-            <input type="text" name="newTodoText" onChange={changeHandler} />
+            <input type="text" name="newTodoText" onChange={changeHandler} autoComplete="off" />
             <button type="submit" disabled={!todoText}>
                 Create Todo
             </button>

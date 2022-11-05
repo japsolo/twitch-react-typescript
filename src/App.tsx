@@ -19,7 +19,14 @@ function App() {
         });
     };
 
-    const deleteTodoHandler = (id: string): void => {
+    const updateOrDeleteTodoHandler = (id: string, isDone?: boolean): void => {
+        if (isDone !== undefined) {
+            return dispatch({
+                type: "update",
+                payload: { id },
+            });
+        }
+
         dispatch({
             type: "delete",
             payload: { id },
@@ -30,7 +37,7 @@ function App() {
         <div className="App">
             <h2>Todo List - TS</h2>
             <Form createTodo={createTodoHandler} />
-            <Todo todoData={todos} deleteTodo={deleteTodoHandler} />
+            <Todo todoData={todos} updateOrDeleteTodo={updateOrDeleteTodoHandler} />
         </div>
     );
 }
